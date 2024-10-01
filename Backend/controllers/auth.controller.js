@@ -1,6 +1,8 @@
 import { User } from "../models/user.model.js";
 import bcrypt from "bcrypt";
+import { sendCookie } from "../utils/sendCookie.js";
 
+//Signing Up the User
 export const signup = async (req, res) => {
   try {
     const { fullName, username, password, confirmPassword, gender } = req.body;
@@ -27,24 +29,29 @@ export const signup = async (req, res) => {
     });
 
     if (newUser) {
-        await newUser.save();
-        res.status(201).json({
-            _id: newUser._id,
-            fullName: newUser.fullName,
-            username: newUser.username,
-            profilePic: newUser.profilePic,
-        });
+      sendCookie(newUser._id, res);
+      await newUser.save();
+      res.status(201).json({
+        _id: newUser._id,
+        fullName: newUser.fullName,
+        username: newUser.username,
+        profilePic: newUser.profilePic,
+      });
     } else {
-        res.status(400).json({ error: "Invalid user data" });
+      res.status(400).json({ error: "Invalid user data" });
     }
   } catch (error) {
     console.log("Error in signup controller", error.message);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+//Logging in the User
 export const login = (req, res) => {
   res.send("Login routes");
 };
+
+//Logging Out the User
 export const logout = (req, res) => {
   res.send("Logout routes");
 };
