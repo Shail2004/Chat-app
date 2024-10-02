@@ -23,7 +23,7 @@ app.use("/api/users", userRoutes);
 
 //Basic Route to check if the server is working
 app.get("/", (req, res) => {
-  res.send("Hello World!!");
+  res.send("Working");
 });
 
 app.listen(5000, () => {
