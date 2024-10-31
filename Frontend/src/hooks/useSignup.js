@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useAuthContext } from "../context/AuthContext";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
+  const { setAuthUser } = useAuthContext()
 
   const signup = async ({
     fullName,
@@ -33,6 +35,11 @@ const useSignup = () => {
 
       const data = res.data;
       toast.success("Signup successful!");
+
+      //local storage
+      localStorage.setItem("chat-user", JSON.stringify(data));
+      setAuthUser(data);
+
     } catch (error) {
       if (error.response) {
         // The request was made, and the server responded with a status code outside the range of 2xx
