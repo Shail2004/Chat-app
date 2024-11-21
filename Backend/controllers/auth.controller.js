@@ -1,6 +1,6 @@
 import { User } from "../models/user.model.js";
 import bcrypt from "bcrypt";
-import { sendCookie } from "../utils/sendCookie.js";
+import sendCookie from "../utils/sendCookie.js";
 
 //Signing Up the User
 export const signup = async (req, res) => {

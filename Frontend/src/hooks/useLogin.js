@@ -15,7 +15,7 @@ const useLogin = () => {
             const res = await axios.post("http://localhost:4000/api/auth/login", {
                 username,
                 password,
-            });
+            }, { withCredentials: true, });
 
             const data = res.data;
             if (data.error) {
@@ -43,7 +43,7 @@ const useLogin = () => {
 }
 export default useLogin;
 
-function handleInputErrors({ username,password }) {
+function handleInputErrors({ username, password }) {
     if (!username || !password) {
         toast.error("Please fill in all fields");
         return false;
