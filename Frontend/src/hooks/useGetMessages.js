@@ -10,7 +10,7 @@ const useGetMessages = () => {
         const getMessages = async () => {
             try {
                 setLoading(true);
-                const res = await axios.get(`http://localhost:4000/api/messages/${selectedConversation._id}`, { withCredentials: true })
+                const res = await axios.get(`https://chat-app-7ln1.onrender.com/api/messages/${selectedConversation._id}`, { withCredentials: true })
                 const data = res.data;
                 if (res.data.error) {
                     throw new Error(res.data.error);

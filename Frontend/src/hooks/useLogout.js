@@ -10,7 +10,7 @@ const useLogout = () => {
 	const logout = async () => {
 		setLoading(true);
 		try {
-			const res = await axios.post("http://localhost:4000/api/auth/logout", {}, {
+			const res = await axios.post("https://chat-app-7ln1.onrender.com/api/auth/logout", {}, {
 				headers: { "Content-Type": "application/json" },
 			});
 

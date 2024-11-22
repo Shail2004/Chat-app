@@ -25,7 +25,7 @@ const useSignup = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:4000/api/auth/signup", {
+      const res = await axios.post("https://chat-app-7ln1.onrender.com/api/auth/signup", {
         fullName,
         username,
         password,

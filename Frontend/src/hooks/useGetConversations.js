@@ -10,7 +10,7 @@ const useGetConversations = () => {
         const getConversations = async () => {
             setLoading(true);
             try {
-                const res = await axios.get("http://localhost:4000/api/users/getUsers", { withCredentials: true });
+                const res = await axios.get("https://chat-app-7ln1.onrender.com/api/users/getUsers", { withCredentials: true });
 
                 if (res.data.error) {
                     throw new Error(res.data.error);

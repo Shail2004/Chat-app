@@ -10,7 +10,7 @@ const useSendMessage = () => {
     const sendMessage = async (message) => {
         setLoading(true);
         try {
-            const res = await axios.post(`http://localhost:4000/api/messages/send/${selectedConversation._id}`, { message }, {
+            const res = await axios.post(`https://chat-app-7ln1.onrender.com/api/messages/send/${selectedConversation._id}`, { message }, {
                 headers: {
                     "Content-Type": "application/json",
                 },
