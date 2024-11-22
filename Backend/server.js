@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.routes.js";
@@ -11,6 +12,8 @@ import { app, server } from "./socket/socket.js";
 
 //initializing express
 dotenv.config();
+
+const __dirname = path.resolve();
 const PORT = process.env.PORT || 4000;
 
 //Middlewares
@@ -29,6 +32,12 @@ app.use(morgan('dev'));
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+
+app.use(express.static(path.join(__dirname, "/Frontend/dist")));
+
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
+});
 
 //Basic Route to check if the server is working
 app.get("/", (req, res) => {
