@@ -53,13 +53,10 @@ Make sure you have the following installed:
 5. **Run the Application**:
    To start both the backend and frontend servers:
    ```bash
-   # In the server directory:
-   npm start
-
-   # In the client directory:
+   # In the main directory:
    npm start
    ```
-
+   
 ---
 
 ## Technologies Used 🧰
